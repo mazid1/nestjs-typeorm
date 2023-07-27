@@ -12,6 +12,7 @@ export const dataSourceOptions: DataSourceOptions = {
   database: process.env.DB_NAME,
   entities: ['dist/resources/**/*.entity.js'],
   migrations: ['dist/db/migrations/*.js'],
+  migrationsRun: process.env.NODE_ENV === 'development',
 };
 
 export default new DataSource(dataSourceOptions);
