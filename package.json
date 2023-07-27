@@ -20,7 +20,10 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migration:generate": "npm run build && npx typeorm migration:generate -d ./dist/db/data-source.js",
     "migration:run": "npm run build && npx typeorm migration:run -d ./dist/db/data-source.js",
-    "migration:revert": "npx typeorm migration:revert -d ./dist/db/data-source.js"
+    "migration:revert": "npx typeorm migration:revert -d ./dist/db/data-source.js",
+    "db:create": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js db:create -d ./src/db/data-source.ts --initialDatabase postgres",
+    "db:drop": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js db:drop -d ./src/db/data-source.ts --initialDatabase postgres",
+    "seed": "npm run build && ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed -d ./src/db/data-source.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -33,7 +36,8 @@
     "pg": "^8.11.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
-    "typeorm": "^0.3.17"
+    "typeorm": "^0.3.17",
+    "typeorm-extension": "^2.8.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
